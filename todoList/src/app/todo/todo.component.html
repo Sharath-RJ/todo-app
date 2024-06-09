@@ -1,0 +1,29 @@
+<body>
+    <div class="todo-app">
+        <form class="input-section">
+            <input id="todoInput" type="text" #task placeholder="Add item..." />
+            <button id="addBtn" type="submit" class="add" (click)="addTask(task)" [style.display]="addButtonDisplay">Add</button>
+            <button type="button" class="add" id="update-button" [style.display]="updateButtonDisplay" (click)="addTask(task)">
+                Update
+            </button>
+        
+        </form>
+        <div class="todos">
+            <ul class="todo-list" *ngFor="let todo of todoList;let i = index">
+                <li class="li">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)" value="option1">
+          <label class="form-check-label" for="inlineCheckbox1"></label>
+          <span class="todo-text" [ngClass]="{'strikethrough':strike[i]}">{{todo.content}}</span>
+          <!-- <span class="todo-text">date</span> -->
+          <span class="span-button"><i class="fas fa-trash" (click)="removeTask(i)"></i></span>
+          <span class="span-button"><i class="fas fa-pen" (click)="updateTask(i,task)"></i></span>
+               </li> 
+            </ul>
+            <!--       
+        <img class="face" src="asetes/thinking.png" alt="">
+        <h1 class="not-found"> NOT FOUND</h1> -->
+        </div>
+    </div>
+</body>
+
+
